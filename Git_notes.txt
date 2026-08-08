@@ -9,3 +9,6 @@ git init
 git add <file name>
 git status
 git commit -m "git commands"
+git remote add origin htts://github.com/Sathya-05-LLM/Git_notes.git   -- to connect the local to git repository(get this command in git browser)
+git branch -M main
+git push -u origin main
