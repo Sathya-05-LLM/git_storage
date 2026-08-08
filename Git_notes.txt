@@ -1,3 +1,11 @@
-Git test
+Start -> cmd -> git   --if number of  commands shows, then git installed successfully. If not, its not installed
 
-Its working
+Steps to configure my git hub account to my system
+---------------------------------------------------
+git config --global user.name "Sathya-05-LLM"
+git config --global user.email "sathyanishanth05@gmail.com"
+
+git init
+git add <file name>
+git status
+git commit -m "git commands"
