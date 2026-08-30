@@ -1,7 +1,8 @@
 import streamlit as st
-from langchain_rag import ask
+#from langchain_rag import ask
+from langgraph_rag import ask
 
-st.title("My LangChain RAG Chatbot")
+st.title("LangGraph RAG Chatbot")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []

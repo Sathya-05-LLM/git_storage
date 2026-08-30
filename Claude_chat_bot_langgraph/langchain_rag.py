@@ -28,10 +28,10 @@ Answer:""")
 
 chain = prompt_template | llm
 
-fallback_template = ChatPromptTemplate.from_template("""You are a helpful assistant for an employee handbook chatbot.
-The user said something that isn't related to the handbook (like a greeting or small talk).
-Reply naturally and briefly, and gently mention you can answer questions about
-leave, remote work, reimbursement, performance reviews, probation, or code of conduct.
+fallback_template = ChatPromptTemplate.from_template("""You are a friendly, natural-sounding assistant. The user's message doesn't require looking up specific document information (it's a greeting, small talk, or casual conversation).
+
+Reply naturally and conversationally, the way a person would in a normal chat.
+Only mention that you can help with the employee handbook (leave, remote work, reimbursement, performance reviews, probation, code of conduct) if the user seems to be asking what you can do, or if this is clearly their first message. Otherwise, just chat normally without repeating that list.
 
 User said: {question}
 
