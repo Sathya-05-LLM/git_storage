@@ -13,8 +13,19 @@ git remote add origin htts://github.com/Sathya-05-LLM/Git_notes.git   -- to conn
 git branch -M main
 git push -u origin main
 ---------------------------------------------------
+New Branch
+git clone --branch Source https://github.com/Sathya-05-LLM/git_storage.git
+                      |                                        |
+                   branch name                             local folder name
+----------------------------------------------------
 New commit
 -> This PC -> OS(C:) -> Git -> cmd in search bar
 ----------------------------------------------------
 Sathya-05-LLM
 Copilot1230
+-----------------------------------------------------
+name - Ready_to_learn
+Handle - @Ready_to_learn-m8z
+Channel ID - UCCUbJqm37uHF1AW10wBlBSg
+URL:
+https://youtube.com/@ready_to_learn-m8z?si=6kH5yOgK2XKAeUrh
