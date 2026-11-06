@@ -16,3 +16,5 @@ git push -u origin main
 New commit
 -> This PC -> OS(C:) -> Git -> cmd in search bar
 ----------------------------------------------------
+Sathya-05-LLM
+Copilot1230
