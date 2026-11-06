@@ -1,0 +1,20 @@
+Start -> cmd -> git   --if number of  commands shows, then git installed successfully. If not, its not installed
+
+Steps to configure my git hub account to my system
+---------------------------------------------------
+git config --global user.name "Sathya-05-LLM"
+git config --global user.email "sathyanishanth05@gmail.com"
+
+git init
+git add <file name>
+git status
+git commit -m "git commands"
+git remote add origin htts://github.com/Sathya-05-LLM/Git_notes.git   -- to connect the local to git repository(get this command in git browser)
+git branch -M main
+git push -u origin main
+---------------------------------------------------
+New commit
+-> This PC -> OS(C:) -> Git -> cmd in search bar
+----------------------------------------------------
+Sathya-05-LLM
+Copilot1230
