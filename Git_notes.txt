@@ -19,7 +19,8 @@ git clone --branch Source https://github.com/Sathya-05-LLM/git_storage.git
                    branch name                             local folder name
 
 Rename the branch name -> Don't do directly in local folder
-ren git_storage source
+
+C:\Git\ren git_storage source
 ----------------------------------------------------
 New commit
 -> This PC -> OS(C:) -> Git -> cmd in search bar
