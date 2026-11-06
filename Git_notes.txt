@@ -35,4 +35,4 @@ URL:
 https://youtube.com/@ready_to_learn-m8z?si=6kH5yOgK2XKAeUrh
 ---------------------------------------------------------
 
-Number_Guess_game - url - https://earnest-halva-7df17f.netlify.app
+Number_Guess_game - url - https://numina-oracle.netlify.app
