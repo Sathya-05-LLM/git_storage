@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b1b">
+  <title>NUMINA — The Number Oracle</title>
+  <style>
+    :root {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #f7f4ff;
+      background: #090b1b;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      position: relative;
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 28px 18px;
+      background:
+        radial-gradient(ellipse at 18% 18%, #46318455 0, transparent 38%),
+        radial-gradient(ellipse at 84% 82%, #155a6850 0, transparent 34%),
+        #090b1b;
+    }
+
+    body::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+      opacity: 0.22;
+      background-image: radial-gradient(#d9d3ff 0.7px, transparent 0.7px);
+      background-size: 30px 30px;
+      mask-image: linear-gradient(to bottom, #000, transparent 90%);
+    }
+
+    .glow {
+      position: absolute;
+      width: 360px;
+      aspect-ratio: 1;
+      border: 1px solid #bca6ff18;
+      border-radius: 50%;
+      box-shadow: 0 0 100px #8062dc17, inset 0 0 80px #8062dc0c;
+      pointer-events: none;
+    }
+
+    .glow::before,
+    .glow::after {
+      position: absolute;
+      inset: 28px;
+      border: 1px solid #bca6ff14;
+      border-radius: inherit;
+      content: "";
+    }
+
+    .glow::after {
+      inset: 60px;
+    }
+
+    main {
+      position: relative;
+      width: min(100%, 496px);
+      padding: 38px 42px 32px;
+      overflow: hidden;
+      border: 1px solid #ffffff20;
+      border-radius: 28px;
+      background: linear-gradient(145deg, #1a1b35f2, #111326f5 68%, #101a28f2);
+      box-shadow: 0 32px 100px #0008, 0 1px 0 #ffffff12 inset;
+      backdrop-filter: blur(20px);
+    }
+
+    main::before {
+      position: absolute;
+      top: 0;
+      left: 12%;
+      width: 76%;
+      height: 1px;
+      content: "";
+      background: linear-gradient(90deg, transparent, #e5c987aa, #bba8ff99, transparent);
+    }
+
+    header {
+      text-align: center;
+    }
+
+    .sigil {
+      width: 104px;
+      height: 104px;
+      margin: 0 auto 21px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #d6bd8050;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, #fff8df38, transparent 38%),
+        radial-gradient(circle, #ba9b5940, #6e508c45 55%, #1b2038 72%);
+      box-shadow: 0 0 38px #cfaa6040, inset 0 0 24px #ffffff12;
+    }
+
+    .sigil svg {
+      width: 62px;
+      height: 62px;
+      filter: drop-shadow(0 0 8px #f4d38c99);
+    }
+
+    .eyebrow {
+      margin: 0 0 9px;
+      color: #d7bd81;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.6rem, 11vw, 3.4rem);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      margin: 10px 0 0;
+      color: #aaa9c3;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      letter-spacing: 0.04em;
+    }
+
+    .rule {
+      height: 1px;
+      margin: 27px 0 22px;
+      background: linear-gradient(90deg, transparent, #ffffff24 18%, #ffffff24 82%, transparent);
+    }
+
+    .intro {
+      margin: 0;
+      color: #d2d1e2;
+      font-size: 0.96rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .range {
+      color: #f1d59a;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      clip-path: inset(50%);
+    }
+
+    input,
+    button {
+      min-height: 54px;
+      border-radius: 12px;
+      font: inherit;
+    }
+
+    input {
+      width: 100%;
+      min-width: 0;
+      padding: 0 16px;
+      border: 1px solid #ffffff25;
+      outline: none;
+      color: #fff;
+      background: #090b1b91;
+      font-size: 1rem;
+      transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    input::placeholder {
+      color: #777890;
+    }
+
+    input:focus {
+      border-color: #d5b978;
+      box-shadow: 0 0 0 3px #d5b97824;
+    }
+
+    input:disabled {
+      opacity: 0.65;
+    }
+
+    button {
+      padding: 0 18px;
+      border: 1px solid #f3d89c;
+      color: #20192b;
+      background: linear-gradient(135deg, #f3dda9, #caa95f);
+      box-shadow: 0 6px 20px #caa95f28, inset 0 1px 0 #ffffff8c;
+      font-size: 0.9rem;
+      font-weight: 750;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: transform 160ms ease, filter 160ms ease, background 160ms ease;
+    }
+
+    button:hover:not(:disabled) {
+      filter: brightness(1.09);
+      transform: translateY(-1px);
+    }
+
+    button:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
+    }
+
+    #message {
+      min-height: 1.55em;
+      margin: 22px 0 7px;
+      color: #f1d59a;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.12rem;
+      text-align: center;
+    }
+
+    .attempts {
+      margin: 0;
+      color: #aaa9c3;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    #restart {
+      width: 100%;
+      min-height: 46px;
+      margin-top: 23px;
+      border-color: #ffffff28;
+      color: #dcdaea;
+      background: #ffffff08;
+      box-shadow: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    #restart:hover {
+      border-color: #d5b97880;
+      background: #d5b97812;
+    }
+
+    .footer {
+      margin: 20px 0 0;
+      color: #777890;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 460px) {
+      main {
+        padding: 32px 24px 26px;
+        border-radius: 23px;
+      }
+
+      .sigil {
+        width: 88px;
+        height: 88px;
+      }
+
+      .sigil svg {
+        width: 54px;
+        height: 54px;
+      }
+
+      form {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+  <main>
+    <header>
+      <div class="sigil" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none">
+          <path d="M32 5.5 37.2 24l18.3 8-18.3 8L32 58.5 26.8 40 8.5 32l18.3-8L32 5.5Z"
+            stroke="#f1d59a" stroke-width="1.5" stroke-linejoin="round"/>
+          <circle cx="32" cy="32" r="7" stroke="#fff1c8" stroke-width="1.5"/>
+          <circle cx="32" cy="32" r="2" fill="#fff1c8"/>
+          <path d="M11 13.5h5m-2.5-2.5v5M48 49h5m-2.5-2.5v5" stroke="#c8b4ff" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <p class="eyebrow">A game of instinct &amp; intuition</p>
+      <h1>NUMINA</h1>
+      <p class="subtitle">The Number Oracle</p>
+    </header>
+
+    <div class="rule" aria-hidden="true"></div>
+
+    <p class="intro">The oracle has chosen a number between <span class="range">1 and 100</span>. Read the clues and uncover it in seven guesses.</p>
+
+    <form id="guess-form">
+      <label for="guess">Your guess, from 1 to 100</label>
+      <input id="guess" name="guess" type="number" min="1" max="100" step="1"
+        placeholder="Enter your number" required autofocus>
+      <button id="submit" type="submit">Reveal guess</button>
+    </form>
+
+    <p id="message" role="status" aria-live="polite">Your first clue awaits…</p>
+    <p id="attempts" class="attempts">7 guesses remaining</p>
+    <button id="restart" type="button">Begin a new round</button>
+    <p class="footer">Trust your instincts · Follow the clues</p>
+  </main>
+
+  <script>
+    const form = document.querySelector("#guess-form");
+    const input = document.querySelector("#guess");
+    const submitButton = document.querySelector("#submit");
+    const message = document.querySelector("#message");
+    const attemptsLabel = document.querySelector("#attempts");
+    const maxAttempts = 7;
+
+    let secretNumber;
+    let attempts;
+    let gameOver;
+
+    function startGame() {
+      secretNumber = Math.floor(Math.random() * 100) + 1;
+      attempts = 0;
+      gameOver = false;
+      input.disabled = false;
+      submitButton.disabled = false;
+      input.value = "";
+      message.textContent = "Your first clue awaits…";
+      attemptsLabel.textContent = `${maxAttempts} guesses remaining`;
+      input.focus();
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (gameOver) return;
+
+      const guess = input.valueAsNumber;
+      if (!Number.isInteger(guess) || guess < 1 || guess > 100) {
+        message.textContent = "Choose a whole number from 1 to 100.";
+        input.focus();
+        return;
+      }
+
+      attempts += 1;
+      const remaining = maxAttempts - attempts;
+
+      if (guess === secretNumber) {
+        message.textContent = `The oracle was right — it was ${secretNumber}!`;
+        gameOver = true;
+      } else if (remaining === 0) {
+        message.textContent = `The mystery number was ${secretNumber}.`;
+        gameOver = true;
+      } else {
+        message.textContent = guess < secretNumber ? "A little higher. Trust your instinct…" : "A little lower. You’re getting closer…";
+      }
+
+      attemptsLabel.textContent = `${remaining} ${remaining === 1 ? "guess" : "guesses"} remaining`;
+      input.value = "";
+      input.disabled = gameOver;
+      submitButton.disabled = gameOver;
+      if (!gameOver) input.focus();
+    });
+
+    document.querySelector("#restart").addEventListener("click", startGame);
+    startGame();
+  </script>
+</body>
+</html>
